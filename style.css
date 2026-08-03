@@ -389,3 +389,48 @@ box-shadow:0 5px 15px rgba(0,0,0,.2);
 transform:translateY(-8px);
 background:#2E7D32;
 }
+/* My Websites */
+
+.website-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.website-card{
+background:#fff;
+padding:25px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+text-align:center;
+transition:.4s;
+}
+
+.website-card:hover{
+transform:translateY(-10px);
+}
+
+.website-card h3{
+color:#2e7d32;
+margin-bottom:10px;
+}
+
+.website-card p{
+color:#666;
+margin-bottom:20px;
+}
+
+.website-card a{
+display:inline-block;
+padding:12px 25px;
+background:#43a047;
+color:#fff;
+text-decoration:none;
+border-radius:30px;
+transition:.3s;
+}
+
+.website-card a:hover{
+background:#2e7d32;
+}
