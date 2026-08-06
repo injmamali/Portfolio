@@ -1,396 +1,701 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inzmaam | Portfolio</title>
 
-<title>Injmam Ali | Portfolio</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-<link rel="stylesheet" href="style.css">
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- Loader -->
+    <!-- ========================= -->
+    <!-- Loading Screen -->
+    <!-- ========================= -->
 
-<div id="loader">
-<div class="spinner"></div>
-</div>
+    <div id="loader">
 
-<!-- Header -->
+        <div class="loader-circle"></div>
 
-<header>
+        <h1 class="loader-text">
+            INITIALIZING...
+        </h1>
 
-<div class="logo">
-Injmam<span>.</span>
-</div>
+        <div class="loader-bar">
 
-<nav>
+            <div class="loader-progress"></div>
 
-<a href="#home">Home</a>
+        </div>
 
-<a href="#about">About</a>
+    </div>
 
-<a href="#education">Education</a>
 
-<a href="#skills">Skills</a>
+    <!-- Custom Cursor -->
 
-<a href="#contact">Contact</a>
+    <div class="cursor"></div>
+    <div class="cursor2"></div>
 
-</nav>
 
-<div class="menu">
-<i class="fa-solid fa-bars"></i>
-</div>
+    <!-- Background -->
 
-</header>
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-<!-- Hero -->
 
-<section id="home">
+    <!-- ========================= -->
+    <!-- Header -->
+    <!-- ========================= -->
 
-<div class="left">
+    <header>
 
-<h3>Hello, I'm</h3>
+        <a href="#" class="logo">
 
-<h1>Injmam Ali</h1>
+            INZMAAM
 
-<h2>
-<span id="typing"></span>
-</h2>
+        </a>
 
-<p>
+        <nav>
 
-Currently pursuing
+            <a href="#home">Home</a>
 
-<strong>B.Sc Mathematics</strong>
+            <a href="#about">About</a>
 
-and
+            <a href="#skills">Skills</a>
 
-<strong>NIELIT O Level.</strong>
+            <a href="#projects">Projects</a>
 
-Passionate about Web Development,
-Coding and Learning New Skills.
+            <a href="#timeline">Journey</a>
 
-</p>
+            <a href="#contact">Contact</a>
 
-<div class="buttons">
+        </nav>
 
-<a href="#contact" class="btn">
-Contact Me
-</a>
-<a href="Injmam_Ali_CV1.pdf" download class="btn2">
-    
+        <div class="right-menu">
 
-Download CV
-</a>
+            <button id="themeBtn">
 
-</div>
+                <i class="fa-solid fa-moon"></i>
 
-</div>
+            </button>
 
-<div class="right">
+            <div id="menu">
 
-<div class="image">
+                <i class="fa-solid fa-bars"></i>
 
-<img src="Screenshot_20260717-165515.jpg">
+            </div>
 
-</div>
+        </div>
 
-</div>
+    </header>
 
-</section>
-<div class="social-icons">
 
-    <a href="https://github.com/injmamali" target="_blank">
-        <i class="fab fa-github"></i>
-    </a>
+    <!-- ========================= -->
+    <!-- Hero Section -->
+    <!-- ========================= -->
 
-    <a href="https://www.linkedin.com/in/inzmaam-ali-9566372a6" target="_blank">
-        <i class="fab fa-linkedin"></i>
-    </a>
+    <section id="home" class="hero">
 
-    <a href="https://www.instagram.com/txinzmaam" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
+        <div class="hero-left">
 
-<a href="https://mail.google.com/mail/?view=cm&fs=1&to=injmamali122239@gmail.com" target="_blank">
-    <i class="fas fa-envelope"></i>
-</a>
-</div>
-<!-- About -->
+            <p class="small-title">
 
-<section id="about">
+                HELLO, I'M
 
-<h2 class="title">
+            </p>
 
-About Me
+            <h1>
 
-</h2>
+                <span>INZMAAM</span>
 
-<div class="card">
+                ALI
 
-<p>
+            </h1>
 
-Hello!
+            <h3>
 
-My name is
+                <span class="typing"></span>
 
-<strong>Injmam Ali.</strong>
+            </h3>
 
-I am currently pursuing
+            <p class="hero-text">
 
-<strong>B.Sc Mathematics</strong>
+                I create futuristic websites, modern UI/UX,
+                interactive animations and responsive web
+                applications with HTML, CSS & JavaScript.
 
-along with
+            </p>
 
-<strong>NIELIT O Level.</strong>
+            <div class="hero-buttons">
 
-I enjoy building beautiful websites
-using HTML, CSS and JavaScript.
+                <a href="#projects" class="btn">
 
-I also have knowledge of
+                    View Projects
 
-Canva,
+                </a>
 
-Tally+GST,
+                <a href="#contact" class="btn btn2">
 
-MS Office
+                    Hire Me
 
-and
+                </a>
 
-English Typing (50 WPM).
+            </div>
 
-</p>
+        </div>
 
-</div>
+        <div class="hero-right">
 
-</section>
+    <div class="profile-wrapper">
 
-<!-- Education -->
+        <span class="ring ring1"></span>
+        <span class="ring ring2"></span>
+        <span class="ring ring3"></span>
 
-<section id="education">
+        <span class="dot dot1"></span>
+        <span class="dot dot2"></span>
+        <span class="dot dot3"></span>
+        <span class="dot dot4"></span>
 
-<h2 class="title">
+        <div class="profile-glow"></div>
 
-Education
+        <div class="profile-image">
+            <img src="profile.png" alt="">
+        </div>
 
-</h2>
-
-<div class="edu-box">
-
-<div class="edu">
-
-<h3>
-
-B.Sc Mathematics
-
-</h3>
-
-<p>
-
-Current Course
-
-</p>
+    </div>
 
 </div>
-
-<div class="edu">
-
-<h3>
-
-NIELIT O Level
-
-</h3>
-
-<p>
-
-Current Course
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Skills -->
-
-<section id="skills">
-
-<h2 class="title">
-
-Skills
-
-</h2>
-
-<div class="skills">
-
-<div class="skill">
-
-HTML
-
-<div class="bar">
-
-<span style="width:95%"></span>
-
-</div>
-
-</div>
-
-<div class="skill">
-
-CSS
-
-<div class="bar">
-
-<span style="width:90%"></span>
-
-</div>
-
-</div>
-
-<div class="skill">
-
-JavaScript
-
-<div class="bar">
-
-<span style="width:99%"></span>
-
-</div>
-
-</div>
-
-<div class="skill">
-
-Responsive Design
-
-<div class="bar">
-
-<span style="width:95%"></span>
-
-</div>
-
-</div>
-
-<div class="skill">
-
-Typing (50 WPM)
-
-<div class="bar">
-
-<span style="width:95%"></span>
-
-</div>
-
-</div>
-
-<div class="skill">
-
-CCC
-
-<div class="bar">
-
-<span style="width:99%"></span>
-
-</div>
-
-</div>
-
-<div class="skill">
-
-Tally+GST
-
-<div class="bar">
-
-<span style="width:95%"></span>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- Contact -->
-
-<section id="contact">
-
-<h2 class="title">
-
-Contact Me
-
-</h2>
-
-<div class="contact-card">
-
-<p>
-
-<i class="fa-solid fa-envelope"></i>
-
-injmamali122239@gmail.com
-
-</p>
-
-
-
-<p>
-
-<i class="fa-solid fa-location-dot"></i>
-
-Gonda, Uttar Pradesh
-
-</p>
     </section>
-<!-- My Websites -->
+        <!-- ========================= -->
+    <!-- About Section -->
+    <!-- ========================= -->
 
-<section id="websites">
+    <section id="about" class="about">
 
-<h2 class="title">My Websites</h2>
+        <div class="section-title">
+            <h2>About Me</h2>
+            <span>Who I Am</span>
+        </div>
 
-<div class="website-grid">
+        <div class="about-container">
 
-<div class="website-card">
-<h3>Resume Builder</h3>
-<p>Create Professional Resume Online.</p>
-<a href="https://injmamali.github.io/Resume/" target="_blank">Visit Website</a>
+            <div class="about-image">
+
+                <div class="image-box">
+                    <img src="about.png" alt="About Image">
+                </div>
+
+            </div>
+
+            <div class="about-content">
+
+                <h3>
+                    Frontend Developer &
+                    <span>UI Designer</span>
+                </h3>
+
+                <p>
+                    I'm a passionate web developer who loves creating
+                    beautiful, responsive and animated websites.
+                    My goal is to build modern user experiences with
+                    clean code, creative design and smooth animations.
+                </p>
+
+                <div class="about-info">
+
+                    <div class="info-card">
+                        <i class="fa-solid fa-user"></i>
+                        <h4>Name</h4>
+                        <p>Inzmaam Ali</p>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <h4>Location</h4>
+                        <p>Uttar Pradesh,
+                           India</p>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <h4>Education</h4>
+                       <p>
+B.Sc Mathematics <br>
+O Level (NIELIT) - Pursuing
+</p>
+                    </div>
+
+                    <div class="info-card">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <h4>Experience</h4>
+                        <p>Frontend Projects</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+<div class="info-card">
+    <i class="fa-solid fa-user-graduate"></i>
+    <h4>Qualifications</h4>
+    <p>
+        ✔ O Level (Pursuing)<br>
+        ✔ CCC Certified<br>
+        ✔ Tally ERP<br>
+        ✔ English Typing - 50 WPM<br>
+        ✔ Hindi Typing - Native
+    </p>
+</div>
+    <!-- ========================= -->
+    <!-- Statistics -->
+    <!-- ========================= -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <h2 class="counter" data-target="25">0</h2>
+
+            <p>Projects Completed</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2 class="counter" data-target="15">0</h2>
+
+            <p>Happy Clients</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2 class="counter" data-target="3">0</h2>
+
+            <p>Years Learning</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2 class="counter" data-target="100">0</h2>
+
+            <p>Creativity %</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- Skills -->
+    <!-- ========================= -->
+
+    <section id="skills" class="skills">
+
+        <div class="section-title">
+
+            <h2>My Skills</h2>
+
+            <span>Technologies</span>
+
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+
+                <i class="fa-brands fa-html5"></i>
+
+                <h3>HTML5</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar html"></div>
+
+                </div>
+
+                <span>95%</span>
+
+            </div>
+
+            <div class="skill-card">
+
+                <i class="fa-brands fa-css3-alt"></i>
+
+                <h3>CSS3</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar css"></div>
+
+                </div>
+
+                <span>90%</span>
+
+            </div>
+
+            <div class="skill-card">
+
+                <i class="fa-brands fa-js"></i>
+
+                <h3>JavaScript</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar js"></div>
+
+                </div>
+
+                <span>85%</span>
+
+            </div>
+
+            <div class="skill-card">
+
+                <i class="fa-brands fa-react"></i>
+
+                <h3>React</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar react"></div>
+
+                </div>
+
+                <span>75%</span>
+
+            </div>
+
+            <div class="skill-card">
+
+                <i class="fa-brands fa-github"></i>
+
+                <h3>GitHub</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar github"></div>
+
+                </div>
+
+                <span>85%</span>
+
+            </div>
+
+            <div class="skill-card">
+
+                <i class="fa-solid fa-database"></i>
+
+                <h3>Firebase</h3>
+
+                <div class="progress">
+
+                    <div class="progress-bar firebase"></div>
+
+                </div>
+
+                <span>70%</span>
+
+            </div>
+
+        
+<div class="skill-card">
+    
+    <i class="fa-solid fa-keyboard"></i>
+    
+    <h3>English Typing</h3>
+    
+    <div class="progress">
+        
+        <div class="progress-bar typing"></div>
+        
+    </div>
+    
+    <span>50 WPM</span>
+    
 </div>
 
-
-
-
-
-<div class="website-card">
-<h3>Image resizer</h3>
-<p>Convert your images in kb. </p>
-<a href="https://injmamali.github.io/Image-resizer/" target="_blank">Visit Website</a>
+<div class="skill-card">
+    <i class="fa-solid fa-language"></i>
+    <h3>Hindi Typing</h3>
+    <div class="progress">
+        <div class="progress-bar hindi"></div>
+    </div>
+    <span>Native</span>
 </div>
 
-<div class="website-card">
-
-
+<div class="skill-card">
+    <i class="fa-solid fa-calculator"></i>
+    <h3>Tally ERP</h3>
+    <div class="progress">
+        <div class="progress-bar tally"></div>
+    </div>
+    <span>80%</span>
 </div>
+
+<div class="skill-card">
+    <i class="fa-solid fa-computer"></i>
+    <h3>CCC</h3>
+    <div class="progress">
+        <div class="progress-bar ccc"></div>
+    </div>
+    <span>90%</span>
+</div>
+
+<div class="skill-card">
+    <i class="fa-solid fa-laptop-code"></i>
+    <h3>O Level</h3>
+    <div class="progress">
+        <div class="progress-bar olevel"></div>
+    </div>
+    <span>Pursuing</span>
+</div>
+    </section>
+        <!-- ========================= -->
+    <!-- Projects Section -->
+    <!-- ========================= -->
+
+    <section id="projects" class="projects">
+
+        
+
+            <div class="project-card">
+                <img src="project.jpg" alt="">
+                <div class="project-content">
+                    <h3>Resume Builder</h3>
+                    <p>Online resume builder with PDF download.</p>
+
+                    <div class="project-btn">
+                        <a href="https://injmamali.github.io/Resume/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAThOkVwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp17ik6MyXI2rOIPeGW76LrmPr4Ys_trryqz6XgNe9yJ9hDKVvvy03xXzhNxN_aem_RLtN6-I7jBhAkj74ixp1Zw" class="btn">Live Demo</a>
+                      
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <img src="project2.jpg" alt="">
+                <div class="project-content">
+                    <h3>Image Compressor</h3>
+                    <p>Resize & compress images instantly.</p>
+
+                    <div class="project-btn">
+                        <a href="https://injmamali.github.io/Image-resizer/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAb21jcAThOgFwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp17ik6MyXI2rOIPeGW76LrmPr4Ys_trryqz6XgNe9yJ9hDKVvvy03xXzhNxN_aem_RLtN6-I7jBhAkj74ixp1Zw" class="btn">Live Demo</a>
+                                   </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- Timeline -->
+    <!-- ========================= -->
+
+    <section id="timeline" class="timeline">
+
+        <div class="section-title">
+            <h2>Journey</h2>
+            <span>Timeline</span>
+        </div>
+
+        <div class="timeline-box">
+
+   <div class="timeline-item">
+    <h3>2025</h3>
+    <p>
+        Started learning Web Development (HTML, CSS & JavaScript).
+        Completed CCC and Tally ERP.
+        Started O Level (NIELIT).
+    </p>
+</div>
+
+<div class="timeline-item">
+    <h3>2026</h3>
+    <p>
+        Learning Python through O Level (NIELIT).
+        Building modern responsive websites and real-world projects.
+    </p>
+</div>
+
+<div class="timeline-item">
+    <h3>2027</h3>
+    <p>
+        Expected to complete O Level (NIELIT).
+        Continuing advanced web development and programming.
+    </p>
+</div>
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- Certificates -->
+    <!-- ========================= -->
+
+    <section class="certificate">
+
+        <div class="section-title">
+            <h2>Certificates</h2>
+            <span>Achievements</span>
+        </div>
+
+        <div class="certificate-grid">
+
+            <div class="certificate-card">
+                <i class="fa-solid fa-award"></i>
+                <h3>Web Development</h3>
+                <p>HTML • CSS • JavaScript</p>
+            </div>
+
+            <div class="certificate-card">
+                <i class="fa-solid fa-medal"></i>
+                <h3>Frontend Development</h3>
+                <p>Responsive UI Design</p>
+            </div>
+
+            <div class="certificate-card">
+                <i class="fa-solid fa-certificate"></i>
+                <h3>Programming</h3>
+                <p>JavaScript Projects</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- Contact -->
+    <!-- ========================= -->
+
+  <section id="contact" class="contact">
+
+    <div class="section-title">
+        <h2>Contact Me</h2>
+        <span>Let's Work Together</span>
+    </div>
+
+    <div class="contact-container">
+
+        <form id="contactForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Your Name"
+                required>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Your Email"
+                required>
+
+            <input
+                type="text"
+                id="subject"
+                placeholder="Subject"
+                required>
+
+            <textarea
+                id="message"
+                rows="6"
+                placeholder="Write your message..."
+                required></textarea>
+
+            <button
+                type="submit"
+                class="btn">
+
+                Send Message
+
+            </button>
+
+        </form>
+
+    </div>
 
 </section>
 
-<footer>
+    <!-- ========================= -->
+    <!-- Footer -->
+    <!-- ========================= -->
 
-© 2026 Injmam Ali
-Designed & Developed by Injmam Ali 
+    <footer>
 
-</footer>
+        <h2>INZMAAM</h2>
+
+        <p>
+
+            © 2026 All Rights Reserved.
+
+        </p>
+
+        <div class="social">
+
+            
+            <a href="https://instagram.com/txinzmaam"><i class="fab fa-instagram"></i></a>
+
+            <a href="https://github.com/injmamali"><i class="fab fa-github"></i></a>
+
+            <a href= "https://in.linkedin.com/in/inzmaam-ali-9566372a6"><i class="fab fa-linkedin-in"></i></a>
+
+            
+                
+        
+
+        </div>
+
+    </footer>
+
+
+    <!-- Scroll To Top -->
+
+    <button id="topBtn">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+
+    <!-- JavaScript -->
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init("zvmWF94X22vmeO9_1");
+</script>
 
 <script src="script.js"></script>
-
 </body>
+
 </html>
