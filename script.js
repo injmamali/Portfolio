@@ -1,420 +1,201 @@
-/* =====================================
-   Loading Screen
-===================================== */
+/* Inzmaam Ali Portfolio — interactions */
+(() => {
+  "use strict";
 
-window.addEventListener("load", () => {
+  const $ = (selector, scope = document) => scope.querySelector(selector);
+  const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
 
-    setTimeout(() => {
+  // Loading screen
+  const loader = $("#loader");
+  window.addEventListener("load", () => {
+    window.setTimeout(() => loader?.classList.add("hidden"), 450);
+  });
+  // Fallback in case a remote font/image delays the load event.
+  window.setTimeout(() => loader?.classList.add("hidden"), 3500);
 
-        document.getElementById("loader").style.opacity = "0";
-        document.getElementById("loader").style.visibility = "hidden";
+  // Current year
+  const year = $("#year");
+  if (year) year.textContent = new Date().getFullYear();
 
-    }, 3000);
-
-});
-
-
-/* =====================================
-   Custom Cursor
-===================================== */
-
-const cursor = document.querySelector(".cursor");
-const cursor2 = document.querySelector(".cursor2");
-
-document.addEventListener("mousemove", (e) => {
-
-    if (!cursor || !cursor2) return;
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-    cursor2.style.left = (e.clientX - 20) + "px";
-    cursor2.style.top = (e.clientY - 20) + "px";
-
-});
-
-
-/* =====================================
-   Typing Animation
-===================================== */
-
-const words = [
-
+  // Typing headline
+  const typing = $(".typing");
+  const roles = [
     "Frontend Developer",
-    "UI Designer",
-    "JavaScript Developer",
-    "Freelancer",
-    "Creative Coder"
+    "Video Editor",
+    "Photo Editor",
+    "AI Creative Explorer"
+  ];
+  if (typing) {
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
 
-];
+    const typeLoop = () => {
+      const word = roles[roleIndex];
+      typing.textContent = word.slice(0, charIndex);
 
-let wordIndex = 0;
-let charIndex = 0;
-let deleting = false;
+      if (!deleting && charIndex < word.length) {
+        charIndex++;
+        window.setTimeout(typeLoop, 85);
+      } else if (!deleting) {
+        deleting = true;
+        window.setTimeout(typeLoop, 1250);
+      } else if (charIndex > 0) {
+        charIndex--;
+        window.setTimeout(typeLoop, 42);
+      } else {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        window.setTimeout(typeLoop, 350);
+      }
+    };
+    typeLoop();
+  }
 
-const typing = document.querySelector(".typing");
+  // Mobile navigation
+  const menuToggle = $("#menuToggle");
+  const mainNav = $("#mainNav");
+  const closeMenu = () => {
+    mainNav?.classList.remove("open");
+    menuToggle?.setAttribute("aria-expanded", "false");
+    if (menuToggle) menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  };
 
-function typeEffect(){
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = mainNav?.classList.toggle("open") ?? false;
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.innerHTML = isOpen
+      ? '<i class="fa-solid fa-xmark"></i>'
+      : '<i class="fa-solid fa-bars"></i>';
+  });
+  $$(".nav-link").forEach(link => link.addEventListener("click", closeMenu));
+  document.addEventListener("click", event => {
+    if (mainNav?.classList.contains("open") &&
+        !mainNav.contains(event.target) &&
+        !menuToggle?.contains(event.target)) closeMenu();
+  });
 
-    let current = words[wordIndex];
-
-    if(!deleting){
-
-        typing.textContent = current.substring(0,charIndex++);
-
-        if(charIndex > current.length){
-
-            deleting = true;
-
-            setTimeout(typeEffect,1200);
-
-            return;
-
+  // Reveal on scroll
+  const revealItems = $$(".reveal");
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach(item => revealObserver.observe(item));
+  } else {
+    revealItems.forEach(item => item.classList.add("visible"));
+  }
 
-    }
-
-    else{
-
-        typing.textContent = current.substring(0,charIndex--);
-
-        if(charIndex < 0){
-
-            deleting = false;
-
-            wordIndex++;
-
-            if(wordIndex >= words.length){
-
-                wordIndex = 0;
-
-            }
-
-        }
-
-    }
-
-    setTimeout(typeEffect,deleting ? 50 : 120);
-
-}
-
-typeEffect();
-
-
-/* =====================================
-   Counter Animation
-===================================== */
-
-const counters = document.querySelectorAll(".counter");
-
-const runCounter = () => {
-
-    counters.forEach(counter=>{
-
-        const target = +counter.dataset.target;
-
-        const update = ()=>{
-
-            let value = +counter.innerText;
-
-            const increment = Math.ceil(target / 100);
-
-            if(value < target){
-
-                counter.innerText = value + increment;
-
-                setTimeout(update,20);
-
-            }
-
-            else{
-
-                counter.innerText = target;
-
-            }
-
-        };
-
-        update();
-
+  // Project filters
+  const filterButtons = $$(".filter-btn");
+  const projectCards = $$(".project-card");
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+      filterButtons.forEach(item => item.classList.toggle("active", item === button));
+      projectCards.forEach(card => {
+        const matches = filter === "all" || card.dataset.category === filter;
+        card.classList.toggle("is-hidden", !matches);
+      });
     });
+  });
 
-};
+  // Active navigation and back-to-top
+  const backToTop = $("#backToTop");
+  const navLinks = $$(".nav-link");
+  const sections = $$("main section[id]");
+  const updateScrollUI = () => {
+    const scrollY = window.scrollY;
+    backToTop?.classList.toggle("visible", scrollY > 500);
 
-let counterStarted = false;
+    let current = "home";
+    sections.forEach(section => {
+      if (scrollY >= section.offsetTop - 180) current = section.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+    });
+  };
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+  backToTop?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
-window.addEventListener("scroll",()=>{
+  // Subtle custom cursor on mouse devices
+  const dot = $(".cursor-dot");
+  const ring = $(".cursor-ring");
+  if (window.matchMedia("(pointer: fine)").matches && dot && ring) {
+    document.body.classList.add("cursor-ready");
+    let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+    window.addEventListener("mousemove", event => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+      dot.style.transform = `translate(${mouseX - 3}px, ${mouseY - 3}px)`;
+    });
+    const moveRing = () => {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      ring.style.transform = `translate(${ringX - 15}px, ${ringY - 15}px)`;
+      requestAnimationFrame(moveRing);
+    };
+    moveRing();
+    $$("a, button, input, textarea").forEach(element => {
+      element.addEventListener("mouseenter", () => {
+        ring.style.width = "44px";
+        ring.style.height = "44px";
+        ring.style.borderColor = "rgba(77,255,154,.95)";
+      });
+      element.addEventListener("mouseleave", () => {
+        ring.style.width = "30px";
+        ring.style.height = "30px";
+        ring.style.borderColor = "rgba(77,255,154,.65)";
+      });
+    });
+  }
 
-    const stats = document.querySelector(".stats");
-
-    if(!stats) return;
-
-    const top = stats.getBoundingClientRect().top;
-
-    if(top < window.innerHeight-100 && !counterStarted){
-
-        counterStarted = true;
-
-        runCounter();
-
+  // EmailJS contact form. Uses the existing service/template/public key from the supplied HTML.
+  const contactForm = $("#contactForm");
+  const formStatus = $("#formStatus");
+  contactForm?.addEventListener("submit", async event => {
+    event.preventDefault();
+    const submitButton = $('button[type="submit"]', contactForm);
+    const originalText = submitButton?.innerHTML || "Send Message";
+    if (!window.emailjs) {
+      if (formStatus) formStatus.textContent = "Email service is unavailable. Please try again later.";
+      return;
     }
 
-});
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Sending <i class="fa-solid fa-spinner fa-spin"></i>';
+    }
+    if (formStatus) formStatus.textContent = "";
 
-
-/* =====================================
-   Mobile Menu
-===================================== */
-
-const menuBtn = document.getElementById("menu");
-
-const nav = document.querySelector("nav");
-
-menuBtn.onclick = ()=>{
-
-    nav.classList.toggle("active");
-
-};
-
-document.querySelectorAll("nav a").forEach(link=>{
-
-    link.onclick = ()=>{
-
-        nav.classList.remove("active");
-
+    const formData = {
+      name: $("#name")?.value.trim() || "",
+      email: $("#email")?.value.trim() || "",
+      subject: $("#subject")?.value.trim() || "",
+      message: $("#message")?.value.trim() || ""
     };
 
-});
-/* =====================================
-   Scroll To Top Button
-===================================== */
-
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 400) {
-
-        topBtn.style.display = "block";
-
-    } else {
-
-        topBtn.style.display = "none";
-
+    try {
+      await emailjs.send("service_j5vb8wn", "template_3viv8zl", formData);
+      if (formStatus) formStatus.textContent = "Message sent successfully. Thank you!";
+      contactForm.reset();
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      if (formStatus) formStatus.textContent = "Message could not be sent. Please try again.";
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalText;
+      }
     }
-
-});
-
-topBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-});
-
-
-/* =====================================
-   Fade Reveal Animation
-===================================== */
-
-const fadeItems = document.querySelectorAll(
-    ".about, .stats, .skills, .projects, .timeline, .certificate, .contact"
-);
-
-fadeItems.forEach(item => {
-
-    item.classList.add("fade-up");
-
-});
-
-function revealAnimation() {
-
-    fadeItems.forEach(item => {
-
-        const position = item.getBoundingClientRect().top;
-
-        if (position < window.innerHeight - 120) {
-
-            item.classList.add("show");
-
-        }
-
-    });
-
-}
-
-window.addEventListener("scroll", revealAnimation);
-
-revealAnimation();
-
-
-/* =====================================
-   Active Navigation
-===================================== */
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", () => {
-
-    let current = "";
-
-    sections.forEach(section => {
-
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.clientHeight;
-
-        if (pageYOffset >= sectionTop) {
-
-            current = section.getAttribute("id");
-
-        }
-
-    });
-
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if (link.getAttribute("href") === "#" + current) {
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-});
-
-
-/* =====================================
-   Cursor Hover Effect
-===================================== */
-
-const hoverItems = document.querySelectorAll(
-    "a, button, .btn, .project-card, .skill-card, .info-card"
-);
-
-hoverItems.forEach(item => {
-
-    item.addEventListener("mouseenter", () => {
-
-        if (!cursor2) return;
-        cursor2.style.transform = "scale(1.8)";
-        cursor2.style.borderColor = "#86efac";
-
-    });
-
-    item.addEventListener("mouseleave", () => {
-
-        if (!cursor2) return;
-        cursor2.style.transform = "scale(1)";
-        cursor2.style.borderColor = "#22c55e";
-
-    });
-
-});
-
-
-/* =====================================
-   Smooth Scroll
-===================================== */
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-    anchor.addEventListener("click", function (e) {
-
-        e.preventDefault();
-
-        const target = document.querySelector(this.getAttribute("href"));
-
-        if (target) {
-
-            target.scrollIntoView({
-
-                behavior: "smooth"
-
-            });
-
-        }
-
-    });
-
-});
-
-
-/* =====================================
-   Header Shadow On Scroll
-===================================== */
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 50) {
-
-        header.style.boxShadow = "0 8px 25px rgba(0,0,0,.35)";
-
-    } else {
-
-        header.style.boxShadow = "none";
-
-    }
-
-});
-
-/* ==========================
-   Contact Form EmailJS
-========================== */
-
-const contactForm = document.getElementById("contactForm");
-
-if (contactForm) {
-
-    contactForm.addEventListener("submit", function (e) {
-
-        e.preventDefault();
-
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const subject = document.getElementById("subject").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        emailjs.send(
-            "service_j5vb8wn",
-            "template_3viv8zl",
-            {
-                name: name,
-                email: email,
-                subject: subject,
-                message: message
-            }
-        )
-        .then(function () {
-
-            alert("✅ Message Sent Successfully!");
-
-            contactForm.reset();
-
-        })
-        .catch(function (error) {
-
-            console.error(error);
-
-            alert("❌ Failed to send message.");
-
-        });
-
-    });
-
-}
-
-/* =====================================
-   Console Message
-===================================== */
-
-console.log("%c🚀 Portfolio Developed by Inzmaam",
-"color:#22c55e;font-size:18px;font-weight:bold;");
+  });
+})();
